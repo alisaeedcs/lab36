@@ -6,7 +6,7 @@ using namespace std;
 void outputMenu();
 
 int main() {
-    IntBinaryTree tree;
+    IntBinaryTree binaryTree;
 
     ifstream input("codes.txt");
     string line;
@@ -21,7 +21,29 @@ int main() {
 
         switch (choice) {
             case 1:
-            
+                if (getline(input, line)) {
+                    binaryTree.insertNode(line);
+                    cout << "Added " << line << "to the tree\n";
+                }
+                else {
+                    cout << "All lines already added\n";
+                }
+                break;
+            case 2:
+                cout << "Enter the record to delete: ";
+                getline(cin, line);
+                binaryTree.remove(line);
+                cout << "Deleted " << line <<  " from the tree\n";
+                break;
+            case 3:
+                cout << "Enter the record to search for: ";
+                getline(cin, line);
+                if (binaryTree.searchNode(line)) {
+                    cout << "Record exists in tree\n";
+                }
+
+
+
         }
     } while (choice != 5);
 
